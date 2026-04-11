@@ -1,3 +1,5 @@
+package FuelCalculator;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
@@ -16,7 +18,7 @@ public class CalculationService {
 
             statement.execute();
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
     }
 }

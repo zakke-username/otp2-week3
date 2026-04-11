@@ -1,3 +1,5 @@
+package FuelCalculator;
+
 public class CalculationRecord {
     private double distance;
     private double consumption;

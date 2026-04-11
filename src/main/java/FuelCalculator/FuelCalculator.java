@@ -1,3 +1,5 @@
+package FuelCalculator;
+
 public class FuelCalculator {
 
     public static double calculateTotalFuel(double distance, double consumption) {

@@ -1,3 +1,5 @@
+package FuelCalculator;
+
 import javafx.fxml.FXML;
 import javafx.geometry.NodeOrientation;
 import javafx.scene.Parent;
@@ -6,8 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.text.MessageFormat;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 public class Controller {
     @FXML
@@ -32,13 +32,15 @@ public class Controller {
     private CalculationService calculationService = new CalculationService();
     private LocalizationService localizationService = new LocalizationService();
 
+    public Controller() {}
+
     @FXML
     private void initialize() {
         setLanguage("en");
     }
 
     @FXML
-    private void handleCalculate() {
+    void handleCalculate() {
         try {
             double distance = Double.parseDouble(txtDistance.getText());
             double consumption = Double.parseDouble(txtConsumption.getText());
@@ -59,11 +61,11 @@ public class Controller {
             lblResult.setText(MessageFormat.format(localizationService.getString("result"), totalFuel, totalCost));
         } catch (Exception e) {
             // TODO: show localized error?
-            e.printStackTrace();
+//            e.printStackTrace();
         }
     }
 
-    private void setLanguage(String language) {
+    public void setLanguage(String language) {
         try {
             localizationService.loadStrings(language);
 
@@ -79,27 +81,65 @@ public class Controller {
             }
             handleCalculate();
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
     }
 
     @FXML
-    private void setEnglish() {
+    void setEnglish() {
         setLanguage("en");
     }
 
     @FXML
-    private void setFrench() {
+    void setFrench() {
         setLanguage("fr");
     }
 
     @FXML
-    private void setJapanese() {
+    void setJapanese() {
         setLanguage("ja");
     }
 
     @FXML
-    private void setPersian() {
+    void setPersian() {
         setLanguage("fa");
+    }
+
+
+    // UI component setters for testing
+    void setLblDistance(Label lblDistance) {
+        this.lblDistance = lblDistance;
+    }
+
+    void setLblConsumption(Label lblConsumption) {
+        this.lblConsumption = lblConsumption;
+    }
+
+    void setLblPrice(Label lblPrice) {
+        this.lblPrice = lblPrice;
+    }
+
+    void setLblResult(Label lblResult) {
+        this.lblResult = lblResult;
+    }
+
+    void setTxtDistance(TextField txtDistance) {
+        this.txtDistance = txtDistance;
+    }
+
+    void setTxtConsumption(TextField txtConsumption) {
+        this.txtConsumption = txtConsumption;
+    }
+
+    void setTxtPrice(TextField txtPrice) {
+        this.txtPrice = txtPrice;
+    }
+
+    void setBtnCalculate(Button btnCalculate) {
+        this.btnCalculate = btnCalculate;
+    }
+
+    void setRoot(Parent root) {
+        this.root = root;
     }
 }

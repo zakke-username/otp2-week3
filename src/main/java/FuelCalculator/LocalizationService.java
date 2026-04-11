@@ -1,5 +1,6 @@
+package FuelCalculator;
+
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +25,7 @@ public class LocalizationService {
                 cache.put(rs.getString("key"), rs.getString("value"));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
     }
 
