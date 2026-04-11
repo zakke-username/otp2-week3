@@ -3,4 +3,5 @@
 ### Setup
 - Install mariadb and run the script in schema.sql
   - Create user 'fuel_app_user' with the password 'fuel_app_password'
+  - Run translations.sql
 - Install project dependencies and run with JavaFX
