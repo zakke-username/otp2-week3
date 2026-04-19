@@ -6,9 +6,12 @@ import java.sql.SQLException;
 
 public class DatabaseConnection {
     // Hardcoded for testing
+//    private static final String URL =
+//            System.getenv().getOrDefault("DB_URL",
+//                    "jdbc:mariadb://localhost:3306/fuel_calculator_localization");
     private static final String URL =
             System.getenv().getOrDefault("DB_URL",
-                    "jdbc:mariadb://localhost:3306/fuel_calculator_localization");
+                    "jdbc:mariadb://host.docker.internal:3306/fuel_calculator_localization");
     private static final String USER =
             System.getenv().getOrDefault("DB_USER", "fuel_app_user");
     private static final String PASSWORD =

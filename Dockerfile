@@ -26,8 +26,8 @@ RUN mvn clean package -DskipTests && ls -l target
 ## List target folder to check JAR
 #RUN ls -l target
 #
-## Copy fat jar
-#COPY target/otp2-week5-1.0-SNAPSHOT.jar .
+# Copy fat jar
+COPY target/otp2-week5-1.0-SNAPSHOT.jar .
 
 # Run the **shaded JAR** with JavaFX modules
 CMD ["java", "--module-path", "/opt/javafx-sdk-21/lib", "--add-modules", "javafx.controls,javafx.fxml", "-jar", "otp2-week5-1.0-SNAPSHOT.jar"]
