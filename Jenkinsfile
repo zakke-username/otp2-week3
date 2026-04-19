@@ -23,12 +23,27 @@ pipeline {
                 jacoco()
             }
         }
+        stage('SonarQube analysis') {
+            steps {
+                withSonarQubeEnv('SonarQubeServer') {
+                    bat """
+                    ${tool 'SonarScanner'}\\bin\\sonar-scanner ^
+                    -Dsonar.projectKey=otp2-week5 ^
+                    -Dsonar.sources=src ^
+                    -Dsonar.projectName=otp2-week5 ^
+                    -Dsonar.host.url=http://localhost:9000 ^
+                    -Dsonar.login=${env.SONAR_TOKEN} ^
+                    -Dsonar.java.binaries=target/classes
+                    """
+                }
+            }
+        }
         stage('Build Docker image') {
             steps {
                 bat "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
             }
         }
-        stage('Push to Docker hub') {
+        stage('Push to Docker Hub') {
             steps {
                 withCredentials([usernamePassword(
                     credentialsId: "${DOCKERHUB_CREDENTIALS}",
