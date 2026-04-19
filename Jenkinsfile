@@ -24,7 +24,7 @@ pipeline {
                 jacoco()
             }
         }
-        stage('SonarQube analysis') {
+        stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQubeServer') {
                     bat """
@@ -36,7 +36,6 @@ pipeline {
                         -Dsonar.login=${env.SONAR_TOKEN} ^
                         -Dsonar.java.binaries=target/classes
                     """
-                    }
                 }
             }
         }
