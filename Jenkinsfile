@@ -25,17 +25,7 @@ pipeline {
         }
         stage('SonarQube analysis') {
             steps {
-                withSonarQubeEnv('SonarQubeServer') {
-                    bat """
-                    ${tool 'SonarScanner'}\\bin\\sonar-scanner ^
-                    -Dsonar.projectKey=otp2-week5 ^
-                    -Dsonar.sources=src ^
-                    -Dsonar.projectName=otp2-week5 ^
-                    -Dsonar.host.url=http://localhost:9000 ^
-                    -Dsonar.login=${env.SONAR_TOKEN} ^
-                    -Dsonar.java.binaries=target/classes
-                    """
-                }
+                bat "mvn clean verify sonar:sonar"
             }
         }
         stage('Build Docker image') {
